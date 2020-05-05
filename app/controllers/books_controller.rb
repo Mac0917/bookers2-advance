@@ -4,6 +4,7 @@ class BooksController < ApplicationController
         @books = Book.find(params[:id])
         @book = Book.new
         @user = User.find(@books.user.id)
+        @comment = Comment.new
     end
 
 	def create
