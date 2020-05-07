@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   root "top#start"
   get "home/about" => "top#about"
   resources :users, only: [:show, :edit, :update, :index] 
-  	#resource :books, only: [:show, :edit, :update, :destroy]
+    #resource :books, only: [:show, :edit, :update, :destroy]
+  get "user/search" => "users#search"
+  get "search" => "search#search", as: "search"
   
   
   resources :books do
@@ -20,4 +22,5 @@ Rails.application.routes.draw do
   get "follows/:id" => "relationships#follows", as: "follows"
   get "followers/:id" => "relationships#followers", as: "followers"
 
+  
 end
