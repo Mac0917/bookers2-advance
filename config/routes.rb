@@ -14,8 +14,10 @@ Rails.application.routes.draw do
   end
   delete "/post_images/:book_id/post_comments/:comment_id" => "comments#destroy", as:"comment_destroy"
 
+  post 'follow/:id' => 'relationships#create', as: "follow"
+  post 'unfollow/:id' => 'relationships#destroy', as: "unfollow"
 
-
-
+  get "follows/:id" => "relationships#follows", as: "follows"
+  get "followers/:id" => "relationships#followers", as: "followers"
 
 end

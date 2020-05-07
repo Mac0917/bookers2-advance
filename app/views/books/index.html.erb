@@ -12,6 +12,22 @@
 			  <tr>
 			    <th>introduction</th><th><%= @user.introduction %></th>
 			  </tr>
+			  <tr>
+				<th>follows</th>
+				<th>
+					<%= link_to follows_path(@user.id) do %>
+						<%= @user.follower.count %>
+					<%end%>
+				</th>
+			  </tr>
+			  <tr>
+				<th>followers</th>
+				<th>
+				    <%= link_to followers_path(@user.id) do %>
+						<%= @user.followed.count %>
+				    <%end%>
+				</th>
+			  </tr>
 			</table>
 			<%= link_to edit_user_path(@user), class: 'btn btn-default edit_i' do %>
 			  <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>

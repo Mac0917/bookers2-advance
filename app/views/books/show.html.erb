@@ -11,6 +11,22 @@
 			  <tr>
 			    <th>introduction</th><th><%= @user.introduction %></th>
 			  </tr>
+			  <tr>
+			    <th>follows</th>
+			    <th>
+				  <%= link_to follows_path(@user.id) do %>
+					  <%= @user.follower.count %>
+				  <%end%>
+			    </th>
+			  </tr>
+			  <tr>
+			    <th>followers</th>
+			    <th>
+				  <%= link_to followers_path(@user.id) do %>
+					  <%= @user.followed.count %>
+				  <%end%>
+			    </th>
+			  </tr>
 			</table>
 			<% if @user.id == current_user.id %>
 			  <%= link_to edit_user_path(current_user.id), class: 'btn btn-default edit_i' do%>
@@ -20,6 +36,11 @@
 			  <%= link_to user_path(current_user.id), class: 'btn btn-default edit_i' do%>
 			    <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
 			  <%end%>
+			  <% if current_user.following?(@user) %>
+			    <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST, class: "btn btn-primary foll"  %>
+			  <% else %>
+				<%= link_to 'フォローする', follow_path(@user.id), method: :POST, class: "btn btn-success foll"  %>
+			  <% end %>
 			<%end%>
 
 
