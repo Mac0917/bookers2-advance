@@ -27,17 +27,7 @@ class UsersController < ApplicationController
   	@users = User.all
   	@book = Book.new
   end
-
-  def search
-    @user_or_book = params[:option]  #viewの記述よりparamsで送られるのは文字列
-    @how_search = params[:choice]
-    if @user_or_book == "1"
-      @users = User.search(params[:search], @user_or_book, @how_search)
-    else
-      @books = Book.search(params[:search], @user_or_book, @how_search)
-    end
-  end
-
+  
   private #user_paramsアクションは他のコントローラーのアクションでも働く privateがあることによってこのコントローラーでしか働かない
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)

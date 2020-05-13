@@ -2,13 +2,15 @@ class FavoritesController < ApplicationController
     def create
         favorite = Favorite.new(book_id: params[:book_id], user_id: current_user.id) #link_toでid番号だけだからストロングパラメーターいらない
         favorite.save
-        redirect_to request.referer  #もとの遷移先にいく、もとをgetに変える
+        @book = Book.find(params[:book_id])
+        #非同期通信はその部分だけを入れ替える、なので@userとかを定義する必要はない
+        #remote: trueかdata: {remote: true}
     end
 
     def destroy
         favorite = Favorite.find_by(book_id: params[:book_id], user_id: current_user.id)
         favorite.destroy
-        redirect_to request.referer
+        @book = Book.find(params[:book_id])
     end
 end
 

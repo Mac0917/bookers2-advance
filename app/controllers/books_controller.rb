@@ -12,7 +12,7 @@ class BooksController < ApplicationController
 		@book.user_id = current_user.id
 		if @book.save
 		  redirect_to book_path(@book.id)
-		  flash[:notice] = "You have creatad book successfully."
+          flash[:notice] = "You have creatad book successfully."
 		else
             @user = User.find(current_user.id)
             @books = Book.all
@@ -42,13 +42,13 @@ class BooksController < ApplicationController
     	@book.destroy
     	redirect_to books_path
     end
-	
+
     def index
        @user = User.find(current_user.id)
        @book = Book.new
        @books = Book.all
     end
-    
+
     private
 	def book_params
 		params.require(:book).permit(:title, :body)

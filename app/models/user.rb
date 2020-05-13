@@ -17,8 +17,8 @@ class User < ApplicationRecord
   has_many :follower_user, through: :followed, source: :active # 自分をフォローしている人
 
   # ユーザーをフォローする
-  def follow(user_id)
-    follower.create(followed_id: user_id)
+  def follow(user_id)  #current_user.follow(user) 
+    follower.create(followed_id: user_id, follower_id: self.id)
   end
 
   # ユーザーのフォローを外す
@@ -32,18 +32,16 @@ class User < ApplicationRecord
   end
 
   def User.search(search, user_or_book, how_search)
-    if user_or_book == "1"
-      if how_search == "1"
-          User.where(['name LIKE ?', "%#{search}%"])
-          elsif how_search == "2"
-                  User.where(['name LIKE ?', "%#{search}"])
-          elsif how_search == "3"
-                  User.where(['name LIKE ?', "#{search}%"])
-          elsif how_search == "4"
-                  User.where(['name LIKE ?', "#{search}"])
-          else
-                  User.all
-          end
+      if  how_search == "1"
+            User.where(['name LIKE ?', "%#{search}%"])
+      elsif how_search == "2"
+            User.where(['name LIKE ?', "%#{search}"])
+      elsif how_search == "3"
+            User.where(['name LIKE ?', "#{search}%"])
+      elsif how_search == "4"
+            User.where(['name LIKE ?', "#{search}"])
+      else
+            User.all
       end
   end
 
