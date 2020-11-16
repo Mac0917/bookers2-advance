@@ -19,9 +19,6 @@ dockerとdocker-composeを自分のpcにインストール
 docker-composeを実行<br>
 `docker-compose up -d`
 
-bundle installを実行<br>
-`docker-compose run app bundle install`
-
 データベース作成<br>
 `docker exec -it bookers2-advance_app_1 bash`<br>
 `rails db:create`<br>
