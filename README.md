@@ -1,24 +1,37 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
+私がrailsで初めて作ったアプリケーションです。本の感想を言い合えるSNSアプリです。<br>
 
-Things you may want to cover:
+## バージョン
+ruby・・・2.5.7
+rails・・・5.2.4.4
+nginx・・・1.19.3
+mysql・・・5.7
 
-* Ruby version
+## ローカル環境での実行手順
+dockerを自分のpcにインストール
+docker-compose をインストール
 
-* System dependencies
+好きなディレクトリで<br>
+`git clone https://github.com/Mac0917/bookers2-advance.git`
 
-* Configuration
+移動<br>
+`cd bookers2-advance`
 
-* Database creation
+docker-composeを実行<br>
+`docker-compose up -d`
 
-* Database initialization
+bundle installを実行<br>
+`docker-compose run app bundle install`
 
-* How to run the test suite
+データベース作成<br>
+`docker exec -it bookers2-advance_app_1 bash`
+`rails db:create`
+`rails db:migrate`
 
-* Services (job queues, cache servers, search engines, etc.)
+アクセス<br>
+http://localhost/
 
-* Deployment instructions
 
-* ...
+
