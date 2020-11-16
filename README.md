@@ -4,14 +4,13 @@
 私がrailsで初めて作ったアプリケーションです。本の感想を言い合えるSNSアプリです。<br>
 
 ## バージョン
-ruby・・・2.5.7
-rails・・・5.2.4.4
-nginx・・・1.19.3
+ruby・・・2.5.7<br>
+rails・・・5.2.4.4<br>
+nginx・・・1.19.3<br>
 mysql・・・5.7
 
 ## ローカル環境での実行手順
-dockerを自分のpcにインストール
-docker-compose をインストール
+dockerとdocker-composeを自分のpcにインストール
 
 好きなディレクトリで<br>
 `git clone https://github.com/Mac0917/bookers2-advance.git`
@@ -26,8 +25,8 @@ bundle installを実行<br>
 `docker-compose run app bundle install`
 
 データベース作成<br>
-`docker exec -it bookers2-advance_app_1 bash`
-`rails db:create`
+`docker exec -it bookers2-advance_app_1 bash`<br>
+`rails db:create`<br>
 `rails db:migrate`
 
 アクセス<br>
