@@ -27,5 +27,12 @@ docker-composeを実行<br>
 アクセス<br>
 http://localhost/
 
+終了<br>
+`exit`(コンテナから出る)<br>
+`docker-compose stop`<br>
+`docker-compose rm`<br>
+`docker rmi bookers2-advance_app bookers2-advance_web`<br>
+`docker volume rm bookers2-advance_db-data bookers2-advance_public-data bookers2-advance_tmp-data`
+
 
 
